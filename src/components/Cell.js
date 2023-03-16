@@ -1,4 +1,4 @@
-const Cell = ({ id, cell, setCells, go }) => {
+const Cell = ({ id, cell, setCells, go, setGo, cells }) => {
   const handleClick = (e) => {
     const taken =
       e.target.firstChild.classList.contains("circle") ||
@@ -7,11 +7,25 @@ const Cell = ({ id, cell, setCells, go }) => {
     if (!taken) {
       if (go === "circle") {
         e.target.firstChild.classList.add("circle");
+        handleCellChange("circle");
+        setGo("cross");
       }
       if (go === "cross") {
         e.target.firstChild.classList.add("cross");
+        handleCellChange("cross");
+        setGo("circle");
       }
     }
+  };
+
+  const handleCellChange = (className) => {
+    cells.map((cell, index) => {
+      if (index === id) {
+        return className;
+      } else {
+        return cell;
+      }
+    });
   };
 
   return (
