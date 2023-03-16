@@ -19,13 +19,14 @@ const Cell = ({ id, cell, setCells, go, setGo, cells }) => {
   };
 
   const handleCellChange = (className) => {
-    cells.map((cell, index) => {
+    const nextCells = cells.map((cell, index) => {
       if (index === id) {
         return className;
       } else {
         return cell;
       }
     });
+    setCells(nextCells);
   };
 
   return (
