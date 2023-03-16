@@ -6,15 +6,22 @@ function App() {
   const [cells, setCells] = useState(["", "", "", "", "", "", "", "", ""]);
   const [go, setGo] = useState("circle");
   const [winningMessage, setWinningMessage] = useState(null);
+  const message = "it is now " + go + "'s go";
 
   return (
     <div className="App">
       <div className="gameboard">
         {cells.map((cell, index) => (
-          <Cell key={index} id={index} cell={cell} />
+          <Cell
+            key={index}
+            id={index}
+            cell={cell}
+            setCells={setCells}
+            go={go}
+          />
         ))}
       </div>
-      <p></p>
+      <p>{message}</p>
     </div>
   );
 }
